@@ -1,0 +1,12 @@
+--recurse=yes
+--exclude=.git
+--exclude=ext/*
+--exclude=bin/*
+--exclude=bak/*
+--exclude=obj/*
+--exclude=\*.swp
+--exclude=\*.bak
+--exclude=\*.dat
+--exclude=\*.bin
+--exclude=\*.nes
+--exclude=\*.o
