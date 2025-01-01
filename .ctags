@@ -1,9 +1,14 @@
+--langdef=asm_ca65
+--langmap=asm_ca65:+.asm+.inc
+--regex-asm_ca65=/^([a-zA-Z_][a-zA-Z_0-9]*):/\1/l,label/
+--regex-asm_ca65=/^([a-zA-Z_][a-zA-Z_0-9]*)[ \t]*:?=/\1/d,definition/
 --recurse=yes
 --exclude=.git
 --exclude=ext/*
 --exclude=bin/*
 --exclude=bak/*
 --exclude=obj/*
+--exclude=Makefile
 --exclude=\*.swp
 --exclude=\*.bak
 --exclude=\*.dat
