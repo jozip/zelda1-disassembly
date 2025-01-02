@@ -1,29 +1,3 @@
-function JoinFiles( [string] $outputPath, [string[]] $inputPaths )
-{
-	$outFileName = split-path -leaf $outputPath
-	$outDir = split-path -parent $outputPath
-	$outDir = resolve-path $outDir
-
-	$outputPath = join-path $outDir $outFileName
-	$output = [IO.File]::Open( $outputPath, [IO.FileMode]::Create )
-
-	try
-	{
-		foreach ( $inputPath in $inputPaths )
-		{
-			$inputPath = resolve-path $inputPath
-			$input = [IO.File]::OpenRead( $inputPath )
-			$input.CopyTo( $output )
-			$input.Close()
-		}
-	}
-	finally
-	{
-		$output.Close()
-	}
-}
-
-
 function CompareFiles(
 	[string] $leftPath,
 	[string] $rightPath,

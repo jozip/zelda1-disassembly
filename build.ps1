@@ -100,11 +100,8 @@ if ( !$assemblyPassed )
 }
 
 echo "Linking"
-.\ext\ld65 -o bin\Z.bin -C src\Z.cfg $objPaths
+.\ext\ld65 -o bin\Z.nes -C src\Z.cfg $objPaths
 if ( $LastExitCode -ne 0 ) { exit }
-
-echo "Combining raw ROM with NES header"
-JoinFiles bin\Z.nes -in OriginalNesHeader.bin, bin\Z.bin
 
 if ( !$NoVerify )
 {
