@@ -2,18 +2,14 @@ AS=./ext/ca65
 LD=./ext/ld65
 SRC=$(wildcard src/Z_*.asm)
 TARGET=bin/Z.nes
-RAW=bin/Z.bin
 OBJ=$(patsubst src/%.asm,obj/%.o,$(SRC))
 ORIGINAL=ext/Original.nes
 
 all: dat $(TARGET) verify
 
-$(TARGET): $(RAW)
-	cat OriginalNesHeader.bin $(RAW) > $(TARGET)
-
-$(RAW): $(OBJ)
+$(TARGET): $(OBJ)
 	@mkdir -p $(dir $@)
-	$(LD) -o $(RAW) -C src/Z.cfg $(OBJ) --dbgfile bin/Z.dbg
+	$(LD) -o $(TARGET) -C src/Z.cfg $(OBJ) --dbgfile bin/Z.dbg
 
 obj/%.o: src/%.asm
 	@mkdir -p $(dir $@)
